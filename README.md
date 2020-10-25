@@ -60,8 +60,8 @@ Before saving into the database, the system check the requirements submitted fro
 Here  is **ER diagram** of the system.
 
 ```
-![Image of Yaktocat]
-(https://octodex.github.com/images/yaktocat.png)
+!![alt text]
+(https://github.com/KMSoe/Galaxy-CS50-final-project/blob/master/ER.png)
 ```
 
 
