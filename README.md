@@ -58,18 +58,8 @@ The system check the above requirements and if no issue, hash the password and s
 Before saving into the database, the system check the requirements submitted from the form. Authentication is required for every database process. Database stores all the information of users, categories, products, users' cart and orders. The table, like products, has category id to relate the specific category and in this case, it uses foreign key to reference  the id of categories table.
 
 Here  is **ER diagram** of the system.
-``
-63
-[https://github.com/KMSoe/Galaxy-CS50-final-project/blob/master/ER.png
-64
+
 ![ER](https://user-images.githubusercontent.com/44525618/97115125-3c6cf580-1723-11eb-801a-9d450c690195.png)
-65
-](url)
-66
-```
-`[https://github.com/KMSoe/Galaxy-CS50-final-project/blob/master/ER.png
-![ER](https://user-images.githubusercontent.com/44525618/97115125-3c6cf580-1723-11eb-801a-9d450c690195.png)
-](url)
 
 
 
