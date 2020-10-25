@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Admin, Category
+{% endblock %}
+
+{% block main %}
+<header class="container-fluid">
+    {% include "navbar.html" %}
+</header>
+<div id="admin-section" class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 sidebar">
+            {% include "admin/sidebar.html" %}
+            
+        </div>
+        <div class="col-md-9">
+            <div id="category-section" class="">
+                <h3 class="heading-secondary">Category List</h3>
+                {% include "message.html" %}
+                <a href="/admin/category/add" class="btn primary-btn" role="button"><i class="fa fa-plus"></i>Add New Category</a>
+                {% if categories | length > 0 %}
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    
+                        {% for category in categories %}
+                        
+                      <tr>
+                        <th scope="row">{{ loop.index }}</th>
+                        <td>{{ category["name"] }}</td>
+                        <td>
+                            <a href="/admin/category/edit?id={{category['id']}}" class="btn btn-success" role="button"><i class="fa fa-edit"></i></a>
+                            <a href="/admin/category/delete?id={{category['id']}}" class="btn btn-danger" role="button"><i class="fa fa-trash"></i></a>
+                        </td>
+                        
+                      </tr>
+                
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                  {% else %}
+                  <div class="nothing">
+                    <p>No Category</p>
+                  </div>
+                  {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+<ul>
+    <li class="{{ 'active' if category_id == 0 else '' }}"><a href="/products">ALl Categories</a></li>
+    {% for category in categories %}
+    {% if category_id ==  category['id'] %}
+    <li class="active" ><a href="/products?category_id={{ category['id'] }}">{{ category['name'] }}</a></li>
+    {% else %}
+    <li><a href="/products?category_id={{ category['id'] }}">{{ category['name'] }}</a></li>
+    {% endif %}
+    {% endfor %}
+</ul>

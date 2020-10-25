@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Admin, Order
+{% endblock %}
+
+{% block main %}
+<header class="container-fluid">
+    {% include "navbar.html" %}
+</header>
+<div id="admin-section" class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 sidebar">
+            {% include "admin/sidebar.html" %}
+
+        </div>
+        <div class="col-md-9">
+            <div id="order-section" class="">
+                <h3 class="heading-secondary">Order List</h3>
+                {% include "message.html" %}
+                {% if items | length > 0 : %}
+                {% for item in items %}
+                <div class="order-item border p-2">
+                    <div class="row">
+                        <div class="col-md-4 {{ 'delivered' if item['status'] == 1 else ''  }}">
+                            <b class="d-block">{{ item['name'] }}</b>
+                            <i>{{ item['email'] }}</i>
+                            <p>{{ item['phone'] }}</p>
+                            <address>{{ item['address'] }}</address>
+                        </div>
+                        <div class="col-md-8 table-responsive">
+                            <table class="table table-bordered">
+
+                                <tbody>
+                                    {% for order_item in item['order_items'] %}
+                                    <tr>
+                                        <td>
+                                            <a href="/products/{{ order_item['product_id'] }}">{{ order_item['name'] }}</a>
+
+                                        </td>
+                                        <td>{{ order_item["quantity"] }}</td>
+                                        <td>{{ ((order_item["price"] - (order_item["price"] * order_item["discount"] / 100 )) * order_item["quantity"]) | usd }}
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                <tfoot>
+                                    <td scope="row" colspan="2" class="text-right bold">Total</td>
+                                    <td class="bold">{{ item['total'] | usd }}</td>
+                                </tfoot>
+                                </tbody>
+                            </table>
+                        <p class="text-right my-1"><b>Order received at</b>  : {{ item['createdAt'] }}</p>
+                        {% if item['status'] == 1 %}
+                        <p class="text-right my-1"><b>Deliver at</b>  : {{ item['modifiedAt'] }}</p>
+                        {% endif %}
+                        </div>
+                        {% if item['status'] == 1 %}
+                        <p class="bold"><i class="fa fa-complete"></i>Delivered</p>
+                        {% else %}
+                        <a href="/admin/order/mark?id={{ item['id'] }}&status=1">Mark as Delivered</a>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                <div class="nothing">
+                    <p>No Order</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

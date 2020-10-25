@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Cart
+{% endblock %}
+
+{% block main %}
+<header class="container-fluid">
+    {% include "navbar.html" %}
+</header>
+<div id="cart-section">
+    <h3 class="heading-secondary">Shopping Cart List</h3>
+    {% include "message.html" %}
+    {% if cart_items | length > 0 %}
+    <table class="table">
+        <thead class="">
+            <tr>
+                <th scope="col">No</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Unit Price</th>
+                <th scope="col">Price</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart_items %}
+            <tr>
+                <th scope="row">{{ loop["index"] }}</th>
+                <td>{{ item["name"] }}</td>
+                <td>{{ item["quantity"] }}</td>
+                <td>{{ (item["price"] - (item["price"] * item["discount"] / 100 )) | usd }}</td>
+                <td>{{ ((item["price"] - (item["price"] * item["discount"] / 100 )) * item["quantity"]) | usd }}</td>
+                <td><a href="/cart/delete?id={{ item["id"] }}" class="btn btn-danger" role="button"><i
+                            class="fa fa-trash"></i></a></td>
+            </tr>
+            {% endfor %}
+
+        <tfoot>
+            <td scope="row" colspan="5" class="text-right">Total</td>
+            <td>{{ total | usd }}</td>
+        </tfoot>
+        </tbody>
+    </table>
+    <div class="w-100 text-left">
+        <a href="/cart/clear" class="btn btn-danger" role="button">&times;Clear Cart</a>
+        <a href="/products" class="btn btn-info" role="button">Continue shopping</a>
+    </div>
+    <div class="order-form">
+        <h3 class="border-bottom">Order Now</h3>
+        <form action="/order/add" class="" method="POST">
+            <input type="hidden" name="cart_items" value="{{ cart_items }}">
+            <input type="hidden" name="user_id" value="{{ user['id'] }}">
+            <div class="input-group">
+                <label for="name"><i class="fa fa-user" aria-hidden="true"></i> Your name</label>
+                <input type="text" name="name" value="{{ user['name'] }}" id="name" class="">
+                <small class="small form-text text-left">Required</small>
+            </div>
+            <div class="input-group">
+                <label for="email"><i class="fa fa-envelope" aria-hidden="true"></i> Email</label>
+                <input type="email" name="email" value="{{ user['email'] }}" id="email" class="">
+                <small class="small form-text text-left">Required</small>
+            </div>
+            <div class="input-group">
+                <label for="phone"><i class="fa fa-phone" aria-hidden="true"></i> Phone No</label>
+                <input type="text" name="phone" id="phone" class="">
+                <small class="small form-text text-left">Required</small>
+            </div>
+            <div class="input-group">
+                <label for="address">Address</label>
+                <textarea name="address" id="address" cols="32" rows="5"></textarea>
+                <small class="small form-text text-left">Required</small>
+            </div>
+            <button class="btn primary-btn">Order Now</button>
+        </form>
+    </div>
+    {% else %}
+    <div class="nothing">
+        <p>Empty Cart</p>
+        <a href="/products" class="btn primary-btn">Back To SHOP</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

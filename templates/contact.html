@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Contact Us
+{% endblock %}
+
+{% block main %}
+<header class="container-fluid">
+    {% include "navbar.html" %}
+</header>
+<div id="contact-section">
+    <h3 class="heading-secondary">Contact Us</h3>
+    <form action="" class="sign-up__form">
+        <div class="input-group"> 
+            <label for="username"><i class="fa fa-user mr-1" aria-hidden="true"></i>Name</label>
+            <input type="text" name="username" id="username" class="">
+            <small class="small form-text text-left">Required</small>
+        </div>
+        <div class="input-group">
+            <label for="email"><i class="fa fa-envelope mr-1" aria-hidden="true"></i> Email</label>
+            <input type="email" name="email" id="email" class="">
+            <small class="small form-text text-left">Required</small>
+        </div>
+        <div class="input-group">
+            <label for="feedback">Please describe your issue</label>
+            <textarea name="" id="feedback" cols="32" rows="5"></textarea>
+        </div>
+        <button class="btn primary-btn" disabled>Send</button>
+    </form>
+</div>
+{% endblock %}

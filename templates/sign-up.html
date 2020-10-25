@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sign up
+{% endblock %}
+
+{% block main %}
+<header class="container-fluid">
+    {% include "navbar.html" %}
+</header>
+<div id="sign-up-section">
+    <h3 class="heading-primary">Welcome To Galaxy SHOP</h3>
+    {% include "message.html" %}
+    <form action="/signup" class="sign-up__form" method="POST">
+        <div class="input-group">
+            <label for="username"><i class="fa fa-user mr-1" aria-hidden="true"></i> User Name</label>
+            <input type="text" name="username" id="username" class="">
+            <small class="small form-text text-left">Required</small>
+        </div>
+        <div class="input-group">
+            <label for="email"><i class="fa fa-envelope mr-1" aria-hidden="true"></i> Email</label>
+            <input type="email" name="email" id="email" class="">
+            <small class="small form-text text-left">Required</small>
+        </div>
+        <div class="input-group">
+            <label for="pasword"><i class="fa fa-key mr-1" aria-hidden="true"></i> Password</label>
+            <input type="password" name="password" id="password" class="">
+            <small class="small form-text text-left">Required</small>
+        </div>
+        <div class="input-group">
+            <label for="confirmpass"><i class="fa fa-check-square mr-1" aria-hidden="true"></i> Confirm Password</label>
+            <input type="password" name="confirmpass" id="confirmpass" class="">
+            <small class="small form-text text-left">Required</small>
+        </div>
+        <button class="btn primary-btn" disabled>Sign up</button>
+    </form>
+    <p>Already have an acount? <a href="/signin">Sign in</a></p>
+</div>
+{% endblock %}

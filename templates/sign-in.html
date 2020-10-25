@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Sign in
+{% endblock %}
+
+{% block main %}
+<header class="container-fluid">
+    {% include "navbar.html" %}
+</header>
+<div id="sign-up-section">
+    <h3 class="heading-primary">Welcome Back</h3>
+    {% include "message.html" %}
+    
+    
+    <form action="/signin" class="sign-in__form" method="POST">
+        <div class="input-group">
+            <label for="email"><i class="fa fa-envelope mr-1" aria-hidden="true"></i> Email</label>
+            <input type="email" name="email" id="email" class="">
+            <small class="small form-text text-left">Required</small>
+        </div>
+        <div class="input-group">
+            <label for="pasword"><i class="fa fa-key mr-1" aria-hidden="true"></i> Password</label>
+            <input type="password" name="password" id="password" class="">
+            <small class="small form-text text-left">Required</small>
+        </div>
+        <button class="btn primary-btn" disabled>Sign in</button>
+    </form>
+    <p>New to <b>Galaxy?</b> Sign up <a href="/signup">here</a></p>
+</div>
+{% endblock %}

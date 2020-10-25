@@ -1,0 +1,155 @@
+{% extends "layout.html" %}
+
+{% block title %}
+About Us
+{% endblock %}
+
+{% block main %}
+<header class="container-fluid">
+    {% include "navbar.html" %}
+</header>
+<!-- About us -->
+<div id="welcome-section">
+    <div class="hero-text-box">
+        <h1>Galaxy SHOP</h1>
+        <p class="aim">- Give more time, be creative in your career, <br>&nbsp; we are ready to provide everything you want.</p>
+        <p>-started at 2018.</p>
+    </div>
+</div>
+<div class="about-section">
+    <div>
+        <h3 class="heading-secondary">WHAT IS Galaxy</h3>
+        <p>
+            Galaxy is e-commerce platform for shopping, founded by <span class="founder-name">Kaung Myat Soe</span>
+            and
+            <span class="founder-name">May Thu Aung</span> in 2018. As started,
+            the goal was to make easier for customers to shop various products sold by individuals and small
+            business
+            within <a href="">Mandalay</a>
+        </p>
+        <p>
+            With the the trust of customers, the company has improved and severals suppliers and small business have
+            joined our community.
+        </p>
+        <p>
+            Now, our Galaxy Platform can be used around the country. We serve with many staffs to help the
+            customers'
+            daily lives.
+        </p>
+    </div>
+</div>
+<div class="about-section bg-light">
+    <div>
+        <h3 class="heading-secondary">Our Mission</h3>
+        <p>
+            To support our customers and suppliers with a platform offering easier ways to shop, delivery services,
+            time
+            and energy save and so forth.
+        </p>
+        <p>
+            Our Mission is <span class="aim">To satisfy our customers, to be creative in their valuable time,
+                with our easy, quick, and trustful shopping services.</span>
+        </p>
+    </div>
+</div>
+<div class="about-section">
+    <div>
+        <h3 class="heading-secondary">What We Do?</h3>
+        <p>
+            We create the platform for the customers and suppliers. There are many products on our Galaxy platform supported by individuals and small business around the country. Customers can buy these products through our platform and then, we deliver them to the buyers.
+        </p>
+        <p>
+            In these three cities: Mandalay, Yangon, Naypyitaw, there is Home Delivery Service and cash on delivery.
+        </p>
+        <p>
+            In other cities, customers need one of prepaid types and orders will be delivered by Postal system within a few hours after the bill had been received.
+        </p>
+    </div>
+</div>
+<div class="about-section bg-light" id="team-section">
+    <div class="container">
+        <h3 class="heading-secondary">Our Team</h3>
+        <div class="row mt-5">
+            <div class="col-md-6 text-center my-3">
+                <div class="avator-img">
+                    <img src="/static/images/kms.jpg" alt="Kaung Myat Soe">
+                </div>
+                <div class="mt-3">
+                    <h4>Kaung Myat Soe</h4>
+                    <p>Founder & CEO</p>
+                </div>
+            </div>
+            <div class="col-md-6 text-center my-3">
+                <div class="avator-img">
+                    <img src="/static/images/athu.jpg" alt="May Thu Aung">
+                </div>
+                <div class="mt-3">
+                    <h4>May Thu Aung</h4>
+                    <p>Co-Founder & COO</p>
+                </div>
+            </div>
+        </div>
+        <figure class="figure">
+            <img src="/static/images/group.jpg" class="figure-img img-fluid rounded" alt="Galaxy Group">
+            <figcaption class="figure-caption">Galaxy Group</figcaption>
+          </figure>
+          
+    </div>
+</div>
+<div class="about-section">
+    <div class="">
+        <h3 class="heading-secondary">WHAT DO CUSTOMERS SAY ABOUT Galaxy</h3>
+        <div class="container-fluid">
+            <div class="row review-container">
+                <div class="col-md-6 review">
+                    <div class="avatar-info">
+                        <img src="/static/images/hhk.jpg" alt="Hein Htet Ko">
+                        <span>Hein Htet Ko</span>
+                    </div>
+                    <div class="review-text">
+                        <p>
+                            I'm too busy and no time for shopping. Galaxy help me a lot and it is the most trusted e-commerce site in Myanmar.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 review">
+                    <div class="avatar-info">
+                        <img src="/static/images/kwee-hla.jpg" alt="Hla Htay">
+                        <span>Hla Htay</span>
+                    </div>
+                    <div class="review-text">
+                        <p>
+                            I'm from Yangon. Within the pandemic, I'm afraid of the covid-19 and rare to go outside the home. Galaxy help me to solve my problems. The delivery staff do his duty with the required medical protection and also with the best of intensions. Be Long-lasting the success, Galaxy 
+                        </p>
+                    </div>
+                </div>                
+                <div class="col-md-6 review">
+                    <div class="avatar-info">
+                        <img src="/static/images/kyaw-gyi.jpg" alt="Kyaw Khant Hlaing">
+                        <span>Kyaw Khant Hlaing</span>
+                    </div>
+                    <div class="review-text">
+                        <p>
+                            I started a small business with a small shop in my home the last year. I founded <b>Galaxy</b> on facebook and I joined it a few week later. I have bought items from <b>Galaxy</b> and delivered in my town. Sometimes, I supply my products to <b>Galaxy SHOP</b>. My business has been increasing and the profit also. <b>Galaxy</b> help the small shoppers like me to improve market role with different ways.  
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 review">
+                    <div class="avatar-info">
+                        <img src="/static/images/hak.jpg" alt="Htet Aung Ko">
+                        <span>Htet Aung Ko</span>
+                    </div>
+                    <div class="review-text">
+                        <p>
+                            Galaxy is so up-to-date. Popular and Trending products are avaliable on Galaxy. Shopping process is very simple and easy. Thank Galaxy Team. 
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <a href="/products" class="btn primary-btn text-center py-2">Check out Our Latest products</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

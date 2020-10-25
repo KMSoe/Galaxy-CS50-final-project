@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Admin, Update Category
+{% endblock %}
+
+{% block main %}
+<header class="container-fluid">
+    {% include "navbar.html" %}
+</header>
+<div id="admin-section" class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 sidebar">
+            {% include "admin/sidebar.html" %}
+            
+        </div>
+        <div class="col-md-9">
+            <div id="category-section" class="form-flex">
+                <h3 class="heading-secondary">Update Category</h3>
+                <form action="/admin/category/edit" class="" method="POST">
+                    <input type="hidden" name="id" value="{{ category['id'] }}">
+                    <div class="input-group">
+                        <label for="category">Category Name</label>
+                        <input type="text" name="category" id="category" class="" value="{{ category['name'] }}" autocomplete="off">
+                        <small class="small form-text text-left">Required</small>
+                    </div>
+                    <button class="btn primary-btn">Update Category</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

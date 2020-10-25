@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Admin, Products
+{% endblock %}
+
+{% block main %}
+<header class="container-fluid">
+    {% include "navbar.html" %}
+</header>
+<div id="admin-section" class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 sidebar">
+            {% include "admin/sidebar.html" %}
+
+        </div>
+        <div class="col-md-9 products">
+            <h3 class="heading-secondary">Product List</h3>
+            {% include "message.html" %}
+            <a href="/admin/product/add" class="btn primary-btn" role="button"><i class="fa fa-plus"></i>Add New
+                Product</a>
+
+            {% if products | length > 0 %}
+            <div class="row">
+                {% for product in products %}
+                <div class="col-md-3 mt-2">
+                    <div class="product-item">
+                        <div class="product-image">
+                            <a href="/products/{{ product['id'] }}"><img class="img-fluid" src="/static/images/products-images/{{product['image']}}"
+                                    alt="{{ product['name'] }}"></a>
+                            {% if product['discount'] > 0 %}
+                            <span class="discount">-{{ product['discount'] }}%</span>
+                                {% endif %}
+                        </div>
+                        <div class="product-info">
+                            <ul>
+                                <li class="name">{{ product['name'] }}</li>
+                                <li class="text-muted">{{ product['category_name'] }}</li>
+                                <li class="price">
+                                    {% if product['discount'] > 0 %}
+                                    <del>{{ product['price'] }}</del>
+                                    <em>{{ (product['price'] - (product['price'] * (product['discount'] / 100))) | usd}}</em>
+                                    {% else %}
+                                    <em>{{ product['price'] | usd}}</em>
+        
+                                    {% endif %}
+                                </li>
+                                
+                            </ul>                        
+                        </div>
+                    </div>
+                </div> 
+                {% endfor %}
+            </div>
+
+            {% else %}
+            <div class="nothing">
+                <p>No Product</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

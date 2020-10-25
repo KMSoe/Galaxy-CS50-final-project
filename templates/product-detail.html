@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Dell
+{% endblock %}
+
+{% block main %}
+<header class="container-fluid">
+    {% include "navbar.html" %}
+</header>
+<div id="overlay"></div>
+<div id="dialog">
+    <h3>{{ product['name'] }} <span class="cancel">&times;</span></h3>
+    <form action="/cart/add" method="POST">
+        <input type="hidden" name="product_id" value="{{ product['id'] }}">
+        <div class="input-group">
+            <label for="quantity">Number of items</label>
+            <input type="number" id="quantity" name="quantity" autofocus>
+            <small class="small form-text text-left">Required</small>
+        </div>
+        <div class="btn-toolbar my-3 float-right" role="toolbar" aria-label="Toolbar with button groups">
+            <button class="btn btn-secondary mr-2 cancel">cancel&nbsp;&times;</button>
+            <button class="btn btn-primary mr-2" type="submit">Add to Cart</button>
+        </div>
+
+    </form>
+</div>
+<section class="product-details-section mx-auto">
+    <div class="container">
+        {% include "message.html" %}
+        <div class="row py-3">
+            <div class="col-md-6">
+                <div class="product-img">
+                    <img src="/static/images/products-images/{{ product['image'] }}" class="img-fluid"
+                        alt="Dell XPS 15">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="product-info">
+                    <div class="pd-title">
+                        <h3>{{ product['name'] }}</h3>
+                    </div>
+                    <div class="pd-price">
+                        <h4>
+                            {% if product['discount'] > 0 %}
+                            <del>{{ product['price'] }}</del>
+                            <em>{{ (product['price'] - (product['price'] * (product['discount'] / 100))) | usd}}</em>
+                            {% else %}
+                            <em>{{ product['price'] | usd}}</em>
+                            {% endif %}
+                        </h4>
+                    </div>
+
+                    <div class="pd-quantity">
+                        <span>Quantity : <b>5</b></span>
+                    </div>
+                    <div class="pd-category">
+                        <span>Category :</span>
+                        <h5 class="d-inline-block">{{ product['category_name'] }}</h5>
+                    </div>
+                    <div class="pd-quantity">
+                        <button class="btn primary-btn addToCartBtn">Add To Cart</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 pd-description">
+                <h4>Description</h4>
+                <p class="mt-3">
+                    {{ product['description'] }}
+                </p>
+
+            </div>
+
+
+        </div>
+
+</section>
+<!--End Product Detail Secction -->
+{% endblock %}

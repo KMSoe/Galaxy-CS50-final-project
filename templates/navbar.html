@@ -1,0 +1,30 @@
+<nav class="row">
+    <div class="col-md-4 nav-brand">
+        <h1><a href="/">Galaxy SHOP</a></h1>
+    </div>
+    <ul class="col-md-5 main-nav">
+        <li><a href="/" class="{{ 'active' if path == '/' else '' }}">Home</a></li>
+        <li><a href="/products" class="{{ 'active' if path == '/products' else '' }}">Categories</a></li>
+        <li><a href="/about" class="{{ 'active' if path == '/about' else '' }}">About Us</a></li>
+        <li><a href="/contact" class="{{ 'active' if path == '/contact' else '' }}">Contact Us</a></li>
+    </ul>
+    {% if session.user_id %}
+    <div class="col-md-3 account-nav">
+        <a class="btn btn-outline-primary" href="/logout">Logout</a>
+        {% if session.role == 'admin' %}
+        <a class="btn btn-primary" href="/admin">Dashboard</a>
+
+        {% else %}
+        <a class="btn btn-primary" href="/cart"><i class="fa fa-shopping-cart mr-1"></i>Cart</a>
+        <a class="btn btn-primary" href="/orders"><i class="fa fa-shopping-basket mr-1"></i>My Orders</a>
+        
+        {% endif %}
+    </div>
+    {% else %}
+    <div class="col-md-3 account-nav">
+        <a class="btn btn-outline-primary" href="/signin">Sign in</a>
+        <a class="btn btn-primary" href="/signup">Sign up</a>
+    </div>
+    {% endif %}
+
+</nav>

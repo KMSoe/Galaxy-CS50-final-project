@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Admin, Add Category
+{% endblock %}
+
+{% block main %}
+<header class="container-fluid">
+    {% include "navbar.html" %}
+</header>
+<div id="admin-section" class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 sidebar">
+            {% include "admin/sidebar.html" %}
+
+        </div>
+        <div class="col-md-9">
+            <div id="product-section" class="form-flex">
+                <h3 class="heading-secondary">New Product</h3>
+                {% include "message.html" %}
+                <form action="/admin/product/add" class="" method="POST" enctype="multipart/form-data">
+                    <div class="input-group">
+                        <label for="product">Product Name</label>
+                        <input type="text" name="product" id="product" class="" autocomplete="off">
+                        <small class="small form-text text-left">Required</small>
+                    </div>
+                    <div class="input-group">
+                        <label for="price">Price</label>
+                        <input type="text" name="price" id="price" class="" autocomplete="off">
+                        <small class="small form-text text-left">Required</small>
+                    </div>
+                    <div class="input-group">
+                        <label for="discount">Discount(%)</label>
+                        <input type="text" name="discount" id="discount" class="" autocomplete="off">
+                        <small class="small form-text text-left">Optional</small>
+                    </div>
+                    <div class="input-group">
+                        <label for="quantity">Quantity</label>
+                        <input type="number" name="quantity" id="quantity" class="" autocomplete="off">
+                        <small class="small form-text text-left">Required</small>
+                    </div>
+                    <select class="custom-select" name="category_id">
+                        <option selected disabled>Select Category</option>
+                        {% for category in categories %}
+                        <option value="{{ category['id'] }}">{{ category['name'] }}</option>
+
+                        {% endfor %}
+
+                    </select>
+                    <div class="form-group">
+                        <label for="image">Choose new photo</label>
+                        <input type="file" accept="image/*" id="image" name="file" class="form-control">
+                    </div>
+                    <div class="input-group">
+                        <label for="description">Descripe the product in detail</label>
+                        <textarea name="description" id="description" cols="32" rows="5"></textarea>
+                    </div>
+                    <button class="btn primary-btn mt-4">Add Product</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

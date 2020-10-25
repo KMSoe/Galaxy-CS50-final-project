@@ -1,0 +1,102 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block main %}
+<header class="container-fluid">
+    {% include "navbar.html" %}
+    {% if get_flashed_messages() %}
+    <header>
+        <div class="alert alert-primary border text-center" role="alert">
+            {{ get_flashed_messages() | join(" ") }}
+        </div>
+    </header>
+    {% endif %}
+    {% include "main-hero-section.html" %}
+</header>
+<section id="new-arrival" class="container py-4">
+    <h3 class="heading-secondary">NEW ARRIVAL</h3>
+    <div class="row">
+        {% if new_products | length > 0 : %}
+        {% for product in new_products %}
+        <div class="col-md-3 mt-2">
+            <div class="product-item">
+                <div class="product-image">
+                    <a href="/products/{{ product['id'] }}"><img class="img-fluid" src="/static/images/products-images/{{product['image']}}"
+                            alt="{{ product['name'] }}"></a>
+                    {% if product['discount'] > 0 %}
+                    <span class="discount">-{{ product['discount'] }}%</span>
+                        {% endif %}
+                </div>
+                <div class="product-info">
+                    <ul>
+                        <li class="name">{{ product['name'] }}</li>
+                        <li class="text-muted">{{ product['category_name'] }}</li>
+                        <li class="price">
+                            {% if product['discount'] > 0 %}
+                            <del>{{ product['price'] }}</del>
+                            <em>{{ (product['price'] - (product['price'] * (product['discount'] / 100))) | usd}}</em>
+                            {% else %}
+                            <em>{{ product['price'] | usd}}</em>
+
+                            {% endif %}
+                        </li>
+                        
+                    </ul>                        
+                </div>
+            </div>
+        </div> 
+        {% endfor %}
+        {% else %}  
+        <div class="nothing">
+            <p>No product</p>
+        </div>
+        {% endif %}       
+    </div>
+</section>
+<section id="foryou-section" class="container py-4">
+    <h3 class="heading-secondary">FOR YOU</h3>
+    <div class="row">
+        {% if products | length > 0 : %}
+        {% for product in products %}
+        <div class="col-md-3 mt-2">
+            <div class="product-item">
+                <div class="product-image">
+                    <a href="/products/{{ product['id'] }}"><img class="img-fluid" src="/static/images/products-images/{{product['image']}}"
+                            alt="{{ product['name'] }}"></a>
+                    {% if product['discount'] > 0 %}
+                    <span class="discount">-{{ product['discount'] }}%</span>
+                        {% endif %}
+                </div>
+                <div class="product-info">
+                    <ul>
+                        <li class="name">{{ product['name'] }}</li>
+                        <li class="text-muted">{{ product['category_name'] }}</li>
+                        <li class="price">
+                            {% if product['discount'] > 0 %}
+                            <del>{{ product['price'] }}</del>
+                            <em>&dollar;{{ (product['price'] - (product['price'] * (product['discount'] / 100))) | usd }}</em>
+                            {% else %}
+                            <em>&dollar;{{ product['price'] | usd }}</em>
+
+                            {% endif %}
+                        </li>
+                        
+                    </ul>                        
+                </div>
+            </div>
+        </div> 
+        {% endfor %}
+        {% else %}  
+        <div class="nothing">
+            <p>No product</p>
+        </div>
+        {% endif %}     
+    </div>
+    <div class="text-center my-4">
+        <a href="/products" type="button" class="btn btn-primary">See more</a>
+    </div>
+</section>
+{% endblock  %}
