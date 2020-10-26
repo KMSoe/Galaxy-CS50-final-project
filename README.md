@@ -47,9 +47,9 @@ The system check the above requirements and if no issue, hash the password and s
 
 - **Product Management** - show the products of **SHOP**. The admin can add, edit, delete these items on this page.
 
--  **Category Management****  -   show the categories of **SHOP**. The admin can add, edit, delete these items on this page.
+-  **Category Management**  -   show the categories of **SHOP**. The admin can add, edit, delete these items on this page.
 
-- **Order Management**** - All of the customers' orders are shown sorted by received date in descending order. ***Mark as delivered*** button is to inform the user that the order is delivered at with a date the  admin mark that order.
+- **Order Management** - All of the customers' orders are shown sorted by received date in descending order. ***Mark as delivered*** button is to inform the user that the order is delivered at with a date the  admin mark that order.
 
   
 
