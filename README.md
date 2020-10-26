@@ -59,7 +59,9 @@ Before saving into the database, the system check the requirements submitted fro
 
 Here  is **ER diagram** of the system.
 
-![ER](https://user-images.githubusercontent.com/44525618/97115125-3c6cf580-1723-11eb-801a-9d450c690195.png)
+[
+![ER](https://user-images.githubusercontent.com/44525618/97183902-b2796700-17cc-11eb-8648-1ce615fc82cc.png)
+](url)
 
 
 
